@@ -31,11 +31,11 @@ onready var sprite = $Sprite
 
 # Building textures
 const TEXTURES = {
-	BuildingType.HOUSE: preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/building_medium_blue_a.png"),
-	BuildingType.FARM: preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/building_medium_blue_a.png"),
-	BuildingType.MINE: preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/building_medium_blue_a.png"),
-	BuildingType.FACTORY: preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/building_medium_blue_a.png"),
-	BuildingType.RESEARCH_CENTER: preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/building_medium_blue_a.png"),
+	BuildingType.HOUSE: preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/house_large_brown_a.png"),
+	BuildingType.FARM: preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/barn_red_a.png"),
+	BuildingType.MINE: preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/warehouse_maroon_a.png"),
+	BuildingType.FACTORY: preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/building_small_brown_b.png"),
+	BuildingType.RESEARCH_CENTER: preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/hospital_a.png"),
 }
 
 func _ready():

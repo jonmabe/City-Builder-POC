@@ -22,6 +22,7 @@ onready var building_scene = preload("res://scenes/Building.tscn")
 onready var ground_scene = preload("res://scenes/Ground.tscn")
 
 func _ready():	
+	randomize()
 	generate_grid()
 	generate_city()
 	center_viewport()
@@ -67,9 +68,7 @@ func place_ground_at(grid_position, ground_type):
 
 	add_child(ground)
 
-func generate_city():
-	randomize()
-	
+func generate_city():	
 	  # Set the size of the city
 	var building_density = 0.2  # The probability of placing a building in a given tile (between 0 and 1)
 	for x in range(CITY_SIZE.x):
@@ -139,3 +138,11 @@ func destroy_random_building():
 		building_to_destroy.queue_free()
 		buildings.remove(random_building_index)
 		event_stream.add_message("Building destroyed")
+
+
+func build_random_building():
+	var grid_position = Vector2(randi() % int(CITY_SIZE.x), randi() % int(CITY_SIZE.y))
+	# Randomly choose a building type
+	var building_type = randi() % (Building.BuildingType.RESEARCH_CENTER + 1)
+	# Place the building at the current grid position
+	place_building_at(grid_position, building_type)

@@ -21,6 +21,7 @@ func _on_timeout():
 	update_time_label()
 	
 	main_node.destroy_random_building()
+	main_node.build_random_building()
 	#main_node.clear_city()
 	#main_node.generate_city()
 
