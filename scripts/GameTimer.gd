@@ -11,7 +11,7 @@ func _ready():
 	wait_time = 1
 	autostart = true
 	is_running = true
-	connect("timeout", self, "_on_timeout")
+	var _timeout = connect("timeout", self, "_on_timeout")
 
 func _on_timeout():
 	in_game_hours += 1

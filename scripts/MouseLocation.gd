@@ -13,7 +13,7 @@ func _ready():
 	# Connect to the mouse moved signal
 	set_process(true)
 
-func _process(delta):
+func _process(_delta):
 	# Get the current mouse position
 	var viewport_mouse_pos = get_viewport().get_mouse_position() 
 	var translated_pos = main_node.mouse_position_to_isometric_grid(viewport_mouse_pos)
