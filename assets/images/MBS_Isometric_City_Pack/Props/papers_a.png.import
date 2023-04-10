@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/papers_a.png-4a14ef8ac36e275bd540f37971117b30.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/images/MBS_Isometric_City_Pack/Props/papers_a.png"
+dest_files=[ "res://.import/papers_a.png-4a14ef8ac36e275bd540f37971117b30.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
