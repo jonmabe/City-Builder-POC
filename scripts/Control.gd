@@ -12,5 +12,4 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == BUTTON_LEFT:
 			var main_node = get_node("/root/Main")
-			var length = Building.BuildingMeta.size()
-			main_node.place_building_mouse(event.position, randi() % length)
+			main_node.place_building_mouse(event.position, main_node.selected_building_type)

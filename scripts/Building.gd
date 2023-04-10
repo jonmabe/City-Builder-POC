@@ -5,19 +5,24 @@ enum BuildingType {HOUSE, FARM, MINE, FACTORY, RESEARCH_CENTER}
 
 const BuildingMeta = {
 	BuildingType.HOUSE: {
-		"name": "HOUSE"
+		"name": "HOUSE",
+		"texture": preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/house_large_brown_a.png")
 	},
 	BuildingType.FARM: {
-		"name": "FARM"
+		"name": "FARM",
+		"texture": preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/barn_red_a.png")
 	},
 	BuildingType.MINE: {
-		"name": "MINE"
+		"name": "MINE",
+		"texture": preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/warehouse_maroon_a.png")
 	},
 	BuildingType.FACTORY: {
-		"name": "FACTORY"
+		"name": "FACTORY",
+		"texture": preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/building_small_brown_b.png")
 	},
 	BuildingType.RESEARCH_CENTER: {
-		"name": "RESEARCH_CENTER"
+		"name": "RESEARCH_CENTER",
+		"texture": preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/hospital_a.png")
 	},
 }
 
@@ -29,15 +34,6 @@ export(Vector2) var grid_position = Vector2(-1,-1)
 # Nodes
 onready var sprite = $Sprite
 
-# Building textures
-const TEXTURES = {
-	BuildingType.HOUSE: preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/house_large_brown_a.png"),
-	BuildingType.FARM: preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/barn_red_a.png"),
-	BuildingType.MINE: preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/warehouse_maroon_a.png"),
-	BuildingType.FACTORY: preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/building_small_brown_b.png"),
-	BuildingType.RESEARCH_CENTER: preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/hospital_a.png"),
-}
-
 func _ready():
 	update_texture()
 
@@ -47,7 +43,7 @@ func _ready():
 # Inside Building.gd
 func update_texture():
 	#if building_type >= 0 and building_type < BuildingType.MAX_BUILDING_TYPE:
-	$Sprite.texture = TEXTURES[building_type]
+	$Sprite.texture = BuildingMeta[building_type]["texture"]
 
 func get_texture_offset(grid_size):
 	var size = $Sprite.texture.get_size()

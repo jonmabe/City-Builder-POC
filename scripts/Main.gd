@@ -7,6 +7,7 @@ const RESOURCE_MODE = 1
 
 # Variables
 var mode = BUILD_MODE
+var selected_building_type = 0
 
 onready var buildings: Array = []
 onready var game_timer = $GameTimer
@@ -26,8 +27,17 @@ func _ready():
 	generate_grid()
 	generate_city()
 	center_viewport()
+
+	selected_building_type = Building.BuildingType.HOUSE
+
+	var build_menu = get_node("UI/CanvasLayer/Control/HBoxContainer/BuildMenu")
+	build_menu.connect("building_selected", self, "_on_building_selected")
+
 	update()
 
+func _on_building_selected(building_type):
+	selected_building_type = building_type
+	
 func center_viewport():
 	var used_area = CITY_SIZE * TILE_SIZE
 	var center = Vector2(0, used_area.y / 2 - TILE_SIZE.y/2)	
