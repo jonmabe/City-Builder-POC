@@ -1,26 +1,29 @@
 extends Node2D
 
+const Building = preload("res://scripts/Building.gd")
+const Ground = preload("res://scripts/Ground.gd")
+const Colony = preload("res://scripts/Colony.gd")
+onready var building_scene = preload("res://scenes/Building.tscn")
+onready var ground_scene = preload("res://scenes/Ground.tscn")
 
 # Constants
 const BUILD_MODE = 0
 const RESOURCE_MODE = 1
+const CITY_SIZE = Vector2(10, 10)
+const TILE_SIZE = Vector2(132, 68)
 
 # Variables
 var mode = BUILD_MODE
 var selected_building_type = 0
 
-onready var buildings: Array = []
+export(Array) onready var buildings: Array = []
+export onready var colony: Colony = Colony.new(self)
+export onready var resource_display = $UI/Resources/HBoxContainer/ResourceDisplay
 onready var game_timer = $GameTimer
 onready var event_stream = $UI/EventStream
 onready var main_camera = $MainCamera
 var main_node
 
-const Building = preload("res://scripts/Building.gd")
-const Ground = preload("res://scripts/Ground.gd")
-const CITY_SIZE = Vector2(10, 10)
-const TILE_SIZE = Vector2(132, 68)
-onready var building_scene = preload("res://scenes/Building.tscn")
-onready var ground_scene = preload("res://scenes/Ground.tscn")
 
 func _ready():	
 	randomize()
@@ -30,7 +33,8 @@ func _ready():
 
 	selected_building_type = Building.BuildingType.HOUSE
 
-	var build_menu = get_node("UI/CanvasLayer/Control/HBoxContainer/BuildMenu")
+	#resource_display = get_node("UI/Resources/HBoxContainer/ResourceDisplay")
+	var build_menu = get_node("UI/Build/Control/HBoxContainer/BuildMenu")
 	build_menu.connect("building_selected", self, "_on_building_selected")
 
 	update()

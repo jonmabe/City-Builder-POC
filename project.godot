@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Reference",
+"class": "City",
+"language": "GDScript",
+"path": "res://scripts/Colony.gd"
+}, {
+"base": "Reference",
+"class": "ColonyResource",
+"language": "GDScript",
+"path": "res://scripts/ColonyResource.gd"
+} ]
+_global_script_class_icons={
+"City": "",
+"ColonyResource": ""
+}
+
 [application]
 
 config/name="Rogue-Like City Builder-GD3"

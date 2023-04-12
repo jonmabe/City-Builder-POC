@@ -1,28 +1,75 @@
 extends Node2D
 
+const ColonyResource = preload("res://scripts/ColonyResource.gd")
+
 # Enums
 enum BuildingType {HOUSE, FARM, MINE, FACTORY, RESEARCH_CENTER}
 
 const BuildingMeta = {
 	BuildingType.HOUSE: {
 		"name": "HOUSE",
-		"texture": preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/house_large_brown_a.png")
+		"texture": preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/house_large_brown_a.png"),
+		"costs": {
+			ColonyResource.ResourceType.FOOD: 20,
+			ColonyResource.ResourceType.WATER: 100,
+			ColonyResource.ResourceType.ENERGY: 50,
+			ColonyResource.ResourceType.MINERALS: 200
+		},
+		"hourly_resources_generated": {
+			ColonyResource.ResourceType.POPULATION: 10
+		},
 	},
 	BuildingType.FARM: {
 		"name": "FARM",
-		"texture": preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/barn_red_a.png")
+		"texture": preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/barn_red_a.png"),
+		"costs": {
+			ColonyResource.ResourceType.FOOD: 20,
+			ColonyResource.ResourceType.WATER: 100,
+			ColonyResource.ResourceType.ENERGY: 50,
+			ColonyResource.ResourceType.MINERALS: 200
+		},
+		"hourly_resources_generated": {
+			ColonyResource.ResourceType.FOOD: 10
+		}
 	},
 	BuildingType.MINE: {
 		"name": "MINE",
-		"texture": preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/warehouse_maroon_a.png")
+		"texture": preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/warehouse_maroon_a.png"),
+		"costs": {
+			ColonyResource.ResourceType.FOOD: 20,
+			ColonyResource.ResourceType.WATER: 100,
+			ColonyResource.ResourceType.ENERGY: 50,
+			ColonyResource.ResourceType.MINERALS: 200
+		},
+		"hourly_resources_generated": {
+			ColonyResource.ResourceType.MINERALS: 10
+		}
 	},
 	BuildingType.FACTORY: {
 		"name": "FACTORY",
-		"texture": preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/building_small_brown_b.png")
+		"texture": preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/building_small_brown_b.png"),
+		"costs": {
+			ColonyResource.ResourceType.FOOD: 20,
+			ColonyResource.ResourceType.WATER: 100,
+			ColonyResource.ResourceType.ENERGY: 50,
+			ColonyResource.ResourceType.MINERALS: 200
+		},
+		"hourly_resources_generated": {
+			ColonyResource.ResourceType.ENERGY: 10
+		}
 	},
 	BuildingType.RESEARCH_CENTER: {
 		"name": "RESEARCH_CENTER",
-		"texture": preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/hospital_a.png")
+		"texture": preload("res://assets/images/MBS_Isometric_City_Pack/Buildings/hospital_a.png"),
+		"costs": {
+			ColonyResource.ResourceType.FOOD: 20,
+			ColonyResource.ResourceType.WATER: 100,
+			ColonyResource.ResourceType.ENERGY: 50,
+			ColonyResource.ResourceType.MINERALS: 200
+		},
+		"hourly_resources_generated": {
+			ColonyResource.ResourceType.SCIENCE: 10
+		}
 	},
 }
 
@@ -53,3 +100,8 @@ func get_texture_offset(grid_size):
 func get_build_cost():
 	return build_cost
 
+func generate_resources(hours):
+	var resources = {}
+	for resource_type in BuildingMeta[building_type]["hourly_resources_generated"]:
+		resources[resource_type] = BuildingMeta[building_type]["hourly_resources_generated"][resource_type] * hours
+	return resources
