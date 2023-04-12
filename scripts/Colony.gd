@@ -31,8 +31,9 @@ func add_resources(new_resources):
 	for resource_type in new_resources:
 		resources[resource_type] += new_resources[resource_type]
 
-func remove_resource(resource_type, amount):
-	resources[resource_type] -= amount
+func remove_resources(resources_to_remove):
+	for resource_type in resources_to_remove:
+		resources[resource_type] -= resources_to_remove[resource_type]
 
 func has_enough_resources(building_type):
 	var costs = Building.BuildingMeta[building_type]["costs"]

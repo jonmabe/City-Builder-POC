@@ -24,8 +24,8 @@ func _on_timeout():
 
 	main_node.colony.collect_resources(hours_since_last_tick)
 	
-	main_node.destroy_random_building()
-	main_node.build_random_building()
+	#main_node.destroy_random_building()
+	#main_node.build_random_building()
 	#main_node.clear_city()
 	#main_node.generate_city()
 

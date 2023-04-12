@@ -127,7 +127,7 @@ func place_building_mouse(mouse_position, building_type):
 	place_building_at(grid_pos, building_type)
 
 func place_building_at(grid_position, building_type):
-	if is_valid_building_position(grid_position):
+	if is_valid_building_position(grid_position) and colony.has_enough_resources(building_type):
 		var building = building_scene.instance()
 		var world_position = Vector2(
 			(grid_position.x - grid_position.y) * (TILE_SIZE.x / 2),
@@ -142,6 +142,7 @@ func place_building_at(grid_position, building_type):
 		
 		add_child(building)
 		buildings.append(building)
+		colony.remove_resources(building.BuildingMeta[building_type]["costs"])
 		event_stream.add_message("Building "+ building.BuildingMeta[building_type]["name"] +" added")
 
 
